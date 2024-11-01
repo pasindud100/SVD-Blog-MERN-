@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
+const userRoutes = require("./Routes/UserRoute");
 
 require("dotenv").config();
 
@@ -16,3 +17,5 @@ mongoose
 app.listen(4000, () => {
   console.log("Server is running on port 4000");
 });
+
+app.use("/api/user", userRoutes);
