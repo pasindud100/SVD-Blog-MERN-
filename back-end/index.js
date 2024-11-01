@@ -2,10 +2,10 @@ const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
 
+require("dotenv").config();
+
 mongoose
-  .connect(
-    "mongodb+srv://dilshanp5400:DbPasindu@cluster0.xbuulqh.mongodb.net/mern-blog?retryWrites=true&w=majority&appName=Cluster0"
-  )
+  .connect(process.env.Mongo_Url)
   .then(() => {
     console.log("Connected to MongoDB");
   })
