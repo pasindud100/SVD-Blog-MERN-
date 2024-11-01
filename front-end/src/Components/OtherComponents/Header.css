@@ -1,7 +1,12 @@
-.hclass{
- display: flex;
- 
- align-items: center;
-
+.nlink{
+    text-decoration: none;
+    color: rgb(57, 55, 55);
+    padding-right: 20px;
 }
 
+.nlink:hover{
+    color: rgb(60, 24, 158);
+}
+.nlink:active{
+    color: rgb(60, 24, 158);
+}
