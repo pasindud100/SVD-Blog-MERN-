@@ -11,6 +11,8 @@ import Signup from "./Components/Pages/Signup";
 import Dashboard from "./Components/Pages/Dashboard";
 import Project from "./Components/Pages/Project";
 import Header from "./Components/OtherComponents/Header"
+import FooterSec from "./Components/OtherComponents/FooterSec";
+
 
 function App() {
   return (
@@ -24,6 +26,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/projects" element={<Project />} />
       </Routes>
+  <FooterSec/>
     </Router>
   );
 }
