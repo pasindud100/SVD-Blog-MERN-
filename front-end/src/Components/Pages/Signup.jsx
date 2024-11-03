@@ -7,13 +7,14 @@ export default function SignUp() {
   const [errorMessage, setErrorMessage] = useState(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value.trim() });
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.username || !formData.email || !formData.password) {
-      return setErrorMessage("Please fill out all fields.");
+      return setErrorMessage("Please fill all fields...");
     }
     try {
       setLoading(true);
@@ -39,7 +40,7 @@ export default function SignUp() {
   return (
     <div className="min-h-screen mt-20">
       <div className="flex p-3 max-w-3xl mx-auto flex-col md:flex-row md:items-center gap-5">
-        {/* left */}
+        {/* for left side */}
         <div className="flex-1">
           <Link
             to="/"
@@ -56,7 +57,7 @@ export default function SignUp() {
             voluptate ullam necessitatibus obcaecati hic ab enim odio.
           </p>
         </div>
-        {/* right */}
+        {/* for right side */}
 
         <div className="flex-1">
           <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
@@ -88,7 +89,7 @@ export default function SignUp() {
               />
             </div>
             <Button
-             className=" bg-gradient-to-r from-indigo-700 via-indigo-400 to-indigo-700 rounded-lg text-white"
+              className=" bg-gradient-to-r from-indigo-700 via-indigo-400 to-indigo-700 rounded-lg text-white"
               type="submit"
               disabled={loading}
             >
