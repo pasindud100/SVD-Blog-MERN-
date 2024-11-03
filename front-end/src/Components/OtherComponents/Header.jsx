@@ -2,12 +2,12 @@ import { Button, Navbar, TextInput } from "flowbite-react";
 import { Link, useLocation } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
 import { FaMoon } from "react-icons/fa";
-import "./Header.css"
+import "./Header.css";
 
 function Header() {
   const path = useLocation().pathname;
   return (
-    <Navbar className="border-b-2">
+    <Navbar className="border-b-2 ">
       <Link
         to="/"
         className="self-center whitespace-nowrap text-sm sm:text-xl font-semibold dark:text-white no-underline"
@@ -40,17 +40,21 @@ function Header() {
         <Navbar.Toggle />
       </div>
       <Navbar.Collapse className="">
-        
-          <Navbar.Link active={path === "/"} as={"div"}>
-            <Link className="nlink" to="/">Home</Link>
-          </Navbar.Link>
-          <Navbar.Link active={path === "/about"} as={"div"}>
-            <Link className="nlink" to="/about">About</Link>
-          </Navbar.Link>
-          <Navbar.Link active={path === "/projects"} as={"div"}>
-            <Link className="nlink" to="/projects">Projects</Link>
-          </Navbar.Link>
-     
+        <Navbar.Link active={path === "/"} as={"div"}>
+          <Link className="nlink" to="/">
+            Home
+          </Link>
+        </Navbar.Link>
+        <Navbar.Link active={path === "/about"} as={"div"}>
+          <Link className="nlink" to="/about">
+            About
+          </Link>
+        </Navbar.Link>
+        <Navbar.Link active={path === "/projects"} as={"div"}>
+          <Link className="nlink" to="/projects">
+            Projects
+          </Link>
+        </Navbar.Link>
       </Navbar.Collapse>
     </Navbar>
   );
