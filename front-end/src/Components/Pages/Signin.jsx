@@ -1,11 +1,20 @@
 import { Alert, Button, Label, Spinner, TextInput } from "flowbite-react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  signInStart,
+  signInSuccess,
+  signInFailure,
+} from "../../redux/user/userSlice";
 
 export default function Signin() {
   const [formData, setFormData] = useState({});
-  const [errorMessage, setErrorMessage] = useState(null);
-  const [loading, setLoading] = useState(false);
+  // const [errorMessage, setErrorMessage] = useState(null);//we use these lines before work with redux
+  // const [loading, setLoading] = useState(false);
+  const {loading, error : errorMessage} = useSelector((state) => state.user);//after redux
+  const dispatch = useDispatch(); //after redux
+
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -14,11 +23,13 @@ export default function Signin() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.email || !formData.password) {
-      return setErrorMessage("Please fill all fields...");
+    //   return setErrorMessage("Please fill all fields...");
+      return dispatch(signInFailure("Please fill all fields..."));
     }
     try {
-      setLoading(true);
-      setErrorMessage(null);
+      // setLoading(true);
+      // setErrorMessage(null); //we use these lines before worewith redux
+      dispatch(signInStart()); //this from redux ..we di these code in useSlice.js
       const res = await fetch("/api/auth/signin", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -26,14 +37,17 @@ export default function Signin() {
       });
       const data = await res.json();
       if (data.success === false) {
-        return setErrorMessage(data.message);
+        // return setErrorMessage(data.message); //we use these lines before worewith redux
+        dispatch(signInFailure(data.message)); //this from redux ..we di these code in useSlice.js
       }
-      setLoading(false);
+      // setLoading(false);
       if (res.ok) {
+        dispatch(signInSuccess(data)); //this from redux ..we di these code in useSlice.js
         navigate("/");
       }
     } catch (error) {
-      setErrorMessage(error.message);
+      // setErrorMessage(error.message);
+      dispatch(signInFailure(error.message)); //this from redux 
       setLoading(false);
     }
   };

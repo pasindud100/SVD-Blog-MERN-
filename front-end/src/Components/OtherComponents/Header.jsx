@@ -41,17 +41,17 @@ function Header() {
       </div>
       <Navbar.Collapse className="">
         <Navbar.Link active={path === "/"} as={"div"}>
-          <Link className="nlink" to="/">
+          <Link to="/">
             Home
           </Link>
         </Navbar.Link>
         <Navbar.Link active={path === "/about"} as={"div"}>
-          <Link className="nlink" to="/about">
+          <Link to="/about">
             About
           </Link>
         </Navbar.Link>
         <Navbar.Link active={path === "/projects"} as={"div"}>
-          <Link className="nlink" to="/projects">
+          <Link to="/projects">
             Projects
           </Link>
         </Navbar.Link>
